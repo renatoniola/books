@@ -31,8 +31,7 @@ class BookResource extends Resource
                 Forms\Components\Textarea::make('book_excerpt')
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('author_id')
-                    ->required()
-                    ->numeric(),
+                    ->required(),
             ]);
     }
 
