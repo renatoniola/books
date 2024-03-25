@@ -31,6 +31,8 @@ class AuthorResource extends Resource
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('author_image_path')
                     ->image()
+                    ->disk('public')
+                    ->visibility('public')
                     ->required(),
             ]);
     }
@@ -40,18 +42,18 @@ class AuthorResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('author_name')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('author_lastname')
-                    ->searchable(),
+                ->label('Author')
+                ->formatStateUsing(function ($state, Author $author) {
+                    return $author->author_name . ' ' . $author->author_lastname;
+                })
+                ->sortable(query: function (Builder $query, string $direction): Builder {
+                    return $query
+                        ->orderBy('author_lastname', $direction)
+                        ->orderBy('author_name', $direction);
+                        
+                }),
+            
                 Tables\Columns\ImageColumn::make('author_image_path'),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

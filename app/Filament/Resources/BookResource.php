@@ -3,15 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BookResource\Pages;
-use App\Filament\Resources\BookResource\RelationManagers;
 use App\Models\Book;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Models\Author;
 
 class BookResource extends Resource
 {
@@ -24,14 +22,26 @@ class BookResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('book_title')
+                    ->label('Title')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('book_descr')
+                    ->label('Description')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('book_excerpt')
+                    ->label('Excerpt')
                     ->columnSpanFull(),
-                Forms\Components\TextInput::make('author_id')
+                Forms\Components\FileUpload::make('book_image_path')
+                    ->image()
+                    ->disk('public')
+                    ->visibility('public')
                     ->required(),
+                Forms\Components\Select::make('author_id')
+                    ->label('Author')
+                    ->options(Author::all()->pluck('author_lastname', 'id'))
+                    ->searchable()
+
+
             ]);
     }
 
@@ -39,19 +49,19 @@ class BookResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('book_image_path'),
                 Tables\Columns\TextColumn::make('book_title')
+                    ->label('Title')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('author_id')
+                Tables\Columns\TextColumn::make('author.author_name')
+                    ->label('Name')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
+                Tables\Columns\TextColumn::make('author.author_lastname')
+                    ->label('Lastname')
+                    ->numeric()
+                    ->sortable(),
             ])
             ->filters([
                 //
