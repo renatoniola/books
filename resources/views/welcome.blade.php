@@ -5,14 +5,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Laravel Project</title>
+    <title>Books</title>
 
     <!-- Stylesheet -->
     @vite('resources/css/app.css')
     </head>
 
     <body>
-    <!-- Your content -->
+      <x-header></x-header>
+    @vite('resources/js/app.js') 
     </body>
 
 </html>
