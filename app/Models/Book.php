@@ -15,11 +15,13 @@ class Book extends Model
         'book_descr',
         'book_excerpt',
         'author_id',
-        'book_image_path'
+        'book_image_path',
+        'book_year_published'
 
     ];
 
-    public function author (): BelongsTo {
+    public function author(): BelongsTo
+    {
         return $this->belongsTo(Author::class);
     }
 }

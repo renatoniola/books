@@ -39,8 +39,10 @@ class BookResource extends Resource
                 Forms\Components\Select::make('author_id')
                     ->label('Author')
                     ->options(Author::all()->pluck('author_lastname', 'id'))
-                    ->searchable()
-
+                    ->searchable(),
+                Forms\Components\TextInput::make('book_year_published')
+                    ->label('Year')
+                    ->maxLength(4),
 
             ]);
     }
@@ -62,6 +64,9 @@ class BookResource extends Resource
                     ->label('Lastname')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('book_year_published')
+                    ->label('Year')
+                    ->searchable(),
             ])
             ->filters([
                 //
