@@ -30,9 +30,10 @@ class AuthorResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('author_image_path')
-                    ->image()
+                    ->avatar()
                     ->disk('public')
                     ->visibility('public')
+                    ->directory('authors')
                     ->required(),
             ]);
     }

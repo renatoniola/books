@@ -10,6 +10,8 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use App\Models\Author;
+use Filament\Forms\Components\Component;
+use Filament\Forms\Components\RichEditor;
 
 class BookResource extends Resource
 {
@@ -21,20 +23,44 @@ class BookResource extends Resource
     {
         return $form
             ->schema([
+
                 Forms\Components\TextInput::make('book_title')
                     ->label('Title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('book_descr')
+
+                RichEditor::make('book_descr')
                     ->label('Description')
-                    ->columnSpanFull(),
+                    ->required()
+                    ->toolbarButtons([
+                        'attachFiles',
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
+                    ]),
+
+
                 Forms\Components\Textarea::make('book_excerpt')
                     ->label('Excerpt')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('book_image_path')
                     ->image()
+                    ->imageEditor()
+                    ->imagePreviewHeight('50')
+                    ->maxSize(1024 * 1024 * 5)
                     ->disk('public')
                     ->visibility('public')
+                    ->directory('books')
                     ->required(),
                 Forms\Components\Select::make('author_id')
                     ->label('Author')
