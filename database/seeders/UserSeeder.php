@@ -19,12 +19,14 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@books.com',
             'password' => bcrypt('password'),
+            'role_id' => 1
         ]);
 
         $normy = User::create([
             'name' => 'normy',
             'email' => 'normy@books.com',
             'password' => bcrypt('password'),
+            'role_id' => 2
         ]);
 
     }

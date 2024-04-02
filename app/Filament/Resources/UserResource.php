@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use App\Models\Role;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -23,7 +24,17 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('email')
+                    ->required()
+                    ->maxLength(255),
+                Forms\Components\Select::make('role_id')
+                    ->label('Role')
+                    ->required()
+                    ->options(Role::all()->pluck('role', 'id'))
+                   
             ]);
     }
 
@@ -31,7 +42,16 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Username'),
+                Tables\Columns\TextColumn::make('email')
+                    ->label('Email'),
+          
+                    Tables\Columns\TextColumn::make('role.role')
+                    ->label('Role')
+                    ->numeric()
+             
+
             ])
             ->filters([
                 //
