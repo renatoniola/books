@@ -78,7 +78,14 @@
       <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+    @if (Auth::guest())
+    <a href="/admin/login" class="text-sm font-semibold leading-6 text-gray-900">
+        Log in <span aria-hidden="true">&rarr;</span></a>
+    @else
+    <a href="/admin/logout" class="text-sm font-semibold leading-6 text-gray-900">{{ Auth::user()->name }} ({{ Auth::user()->email }}) 
+        Log out <span aria-hidden="true">&rarr;</span></a>
+    @endif
+      
     </div>
   </nav>
   <!-- Mobile menu, show/hide based on menu open state. -->
