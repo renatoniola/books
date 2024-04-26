@@ -10,4 +10,5 @@ Route::get('/', function () {
 
 // Page routes
 Route::get('/books', [BookController::class, 'books']);
+Route::get('/my-books', [BookController::class, 'myBooks'])->middleware('auth');
 Route::get('/authors', [AuthorController::class, 'authors']);
