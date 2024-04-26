@@ -10,8 +10,8 @@
     </div>
     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
       <p class="mt-1 text-xs leading-5 text-gray-500">
- 
 
+      @livewire('like-button')
       </p>
     </div>
   </li>
