@@ -14,6 +14,8 @@ class BookUser extends Model
 
     protected $fillable = [
         'book_status',
+        'book_id',
+        'user_id'
     ];
 
     public function statuss(): BelongsTo

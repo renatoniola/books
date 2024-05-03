@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Facades\Auth;
 
 class Book extends Model
 {
@@ -31,5 +32,13 @@ class Book extends Model
         return $this->belongsToMany(User::class);
     }
 
- 
+    public function myBooks(): BelongsToMany
+    {
+        $books = $this->belongsToMany(Book::class, 'book_user')
+            ->withPivot(['book_id', 'user_id', 'book_status']);
+        if (Auth::user()) {
+          $books->where('user_id', '=', Auth::user()->id);
+        }
+        return $books;
+    }
 }

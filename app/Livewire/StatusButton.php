@@ -17,7 +17,7 @@ class StatusButton extends Component
 
     public function mount() {
         $this->statuses = BookStatus::all()->keyBy('id');
-        $this->statusName = $this->statuses[$this->status]->status;
+        $this->statusName = $this->status ? $this->statuses[$this->status]->status : 'not added';
     }
 
     public function render()
@@ -37,7 +37,7 @@ class StatusButton extends Component
     {
 
         $this->hideShowClick();
-       
+        
         $res = BookUser::updateOrcreate(
             [
                 'user_id' => Auth::user()->id,

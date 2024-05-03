@@ -12,13 +12,12 @@
 
       <p class="text-sm leading-6 text-gray-900">Published: {{ $book->book_year_published > 0 ? $book->book_year_published : 'N/A' }}</p>
       <p class="mt-1 text-xs leading-5 text-gray-500">
-        @if ($book->pivot)
+        @if (!Auth::guest()) 
         @livewire('status-button',
         [
-        'status' => $book->pivot->book_status,
+        'status' => !empty($book->myBooks[0]->pivot->book_status) ? $book->myBooks[0]->pivot->book_status : 0,
         'book_id' => $book->id
-        ]
-        )
+        ])
         @endif
 
       </p>

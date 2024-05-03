@@ -21,8 +21,9 @@ class BookController extends Controller
 
     public function books()
     {
+        
         return view('books', [
-            'books' =>  Book::paginate(10),
+            'books' =>  Book::with('myBooks')->paginate(10),
             'statuses' => BookStatus::all(),
             'title' => 'Books'
         ]);
