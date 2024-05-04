@@ -14,6 +14,19 @@ class StatusButton extends Component
     public $book_id;
     public $statusName;
     public $hideShow = false;
+   
+
+    protected $listeners = ['postAdded' => 'closeOtherDropdowns'];
+ 
+    public function closeOtherDropdowns($id)
+    {
+        if($this->__id === $id) {
+            $this->hideShow = !$this->hideShow;
+        } else {
+            $this->hideShow = false;
+        }
+        
+    }
 
     public function mount() {
         $this->statuses = BookStatus::all()->keyBy('id');
@@ -22,15 +35,12 @@ class StatusButton extends Component
 
     public function render()
     {
-        
-
         return view('livewire.status-button');
     }
 
     public function hideShowClick()
     {
-       
-        $this->hideShow = !$this->hideShow;
+        $this->dispatch('postAdded', $this->__id)->to(StatusButton::class);
     }
 
     public function updateBookStatusForUser($bookId, $book_status)
