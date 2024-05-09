@@ -1,0 +1,14 @@
+.gitignore
+to_ignore.txt
+README.MD
+phpunit.xml
+.gitlab-ci.yml
+.env
+.env.example
+.editorconfig
+docker-compose.yml
+.gitignore
+.gitattributes
+tests/
+gitlab/
+vendor/

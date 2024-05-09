@@ -1,0 +1,22 @@
+---
+
+- name: Clear the cache
+  command: chdir={{ DIR }} php artisan config:cache
+
+- name: Create site backup
+  command: chdir={{ DIR }} php artisan backup:run
+
+- name: Maintainance mode
+  command: chdir={{ DIR }} php artisan down
+
+- name: Run composer install
+  command: chdir={{ DIR }} composer install --no-dev
+
+- name: Run npm install
+  command: chdir={{ DIR }} npm install
+
+- name: Artisan migrate
+  command: chdir={{ DIR }} php artisan migrate
+
+- name: End Maintainance mode
+  command: chdir={{ DIR }} php artisan up

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -56,5 +57,9 @@ class User extends Authenticatable
     public function myBooks(): BelongsToMany
     {
         return $this->belongsToMany(Book::class, 'book_user', 'user_id', 'book_id')->withPivot('book_status');
+    }
+
+    public function myAuthors(): BelongsToMany {
+        return $this->belongsToMany(Author::class, 'user_author', 'user_id', 'author_id');
     }
 }

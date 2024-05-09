@@ -1,0 +1,4 @@
+---
+
+- name: creat file
+  shell: "cd {{ DIR }} && touch file-created.txt"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\models\Author;
+use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
 {
@@ -14,10 +15,12 @@ class AuthorController extends Controller
         ]);
     }
 
-    public function author($id) {
+    public function myAuthors()
+    {
         
-        return view('author', [
-            'author' => Author::find($id)
+        return view('authors', [
+            'authors' => Auth::user()->myAuthors()->paginate(10),
+            'title' => 'My authors',
         ]);
     }
 }

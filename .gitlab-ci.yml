@@ -1,0 +1,28 @@
+image: renato1976/rnt-ansible:0.1
+
+stages:
+  - deploy
+
+# Production
+deploy_production:
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - mkdir -p ~/.ssh
+    - eval $(ssh-agent -s)
+    - echo "${SSH_PROD_PRIVATE}" | ssh-add -
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+
+  stage: deploy
+  tags:
+    - Docker
+  when: manual
+  environment:
+    name: Production
+  script:
+    ## - composer install --optimize-autoloader --no-dev
+    - cd ./gitlab/ansible
+    - ansible -i inventory.yml prod -m ping
+    - ansible-playbook -i inventory.yml prod-deploy.yml --limit=prod
+  only:
+    - main
