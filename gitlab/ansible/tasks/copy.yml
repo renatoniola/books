@@ -2,11 +2,11 @@
 - name: copy files
   synchronize: # Rsync
     src: "../../../"
-    dest: "${PATH_TO_ROOT}"
+    dest: "{{ lookup('env', PATH_TO_ROOT) }}"
     delete: yes
     perms: no # Don't use perm/owner/group from the build server as this is all root/root/777.
     owner: no # TODO: test to see that this is true and fix if possible.
     group: no
     recursive: yes
     rsync_opts:
-      - "--exclude-from={{ PROD_SYNC_EXCLUDE_LIST }}"
+      - "--exclude-from={{ lookup('env', PROD_SYNC_EXCLUDE_LIST) }}"
