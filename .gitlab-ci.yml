@@ -12,6 +12,7 @@ deploy_production:
     - echo "${SSH_PROD_PRIVATE}" | ssh-add -
     - ls -al ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - ssh-keyscan -t rsa $ANSIBLE_HOST_IP >> ~/.ssh/known_hosts
     - ls -al ~/.ssh
 
 
