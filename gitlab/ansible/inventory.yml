@@ -1,7 +1,7 @@
 prod:
   hosts:
     prod:
-      ansible_user: renato_ssh
+      ansible_ssh_user: renato_ssh
       ansible_host: 212.227.224.148
-      # ansible_ssh_private_key: "{{ lookup('env','SSH_PROD_PRIVATE') }}"
-      # ansible_pass: yooo 
+      ansible_ssh_private_key_file: "{{ lookup('env','SSH_PROD_PRIVATE') }}"
+      ansible_pass: yooo 
