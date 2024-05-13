@@ -10,6 +10,7 @@ deploy_production:
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
     - echo "${SSH_PROD_PRIVATE}" | ssh-add -
+    - ls -al ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
 
