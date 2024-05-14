@@ -3,11 +3,13 @@
 # - name: Create site backup
   # command: chdir={{ DIR }} php artisan backup:run
 
+- name: Run composer install
+  command: chdir={{ DIR }} composer install --no-dev
+
 - name: Maintainance mode
   command: chdir={{ DIR }} php artisan down
 
-- name: Run composer install
-  command: chdir={{ DIR }} composer install --no-dev
+
 
 - name: Clear the cache
   command: chdir={{ DIR }} php artisan config:cache
