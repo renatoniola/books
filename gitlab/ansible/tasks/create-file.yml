@@ -4,4 +4,4 @@
   shell: "cd {{ DIR }} && touch .env"
 
 - name: Create and fill .env file 2.
-  shell: "cd {{ DIR }} && echo {{ lookup('env', 'ENV_FILE') }} >> '{{ DIR }}.env2'"
+  shell: "cd {{ DIR }} && ecat {{ lookup('env', 'ENV_FILE') }} >> '{{ DIR }}.env2'"
