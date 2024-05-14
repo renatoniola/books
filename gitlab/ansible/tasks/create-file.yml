@@ -1,4 +1,7 @@
 ---
 
-- name: creat file
-  shell: "cd {{ DIR }} && touch file-created.txt"
+- name: Create and fill .env file.
+  shell: "cd {{ DIR }} && touch .env"
+
+- name: Create and fill .env file 2.
+  shell: "cd {{ DIR }} && cat {{ lookup('env', 'ENV_FILE') }} > '{{ DIR}}/.env'"
