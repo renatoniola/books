@@ -1,7 +1,7 @@
 ---
 
 - name: Create site backup
-  command: chdir={{ DIR }} php artisan backup:run
+  # command: chdir={{ DIR }} php artisan backup:run
 
 - name: Maintainance mode
   command: chdir={{ DIR }} php artisan down
