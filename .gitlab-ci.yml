@@ -9,9 +9,8 @@ deploy_production:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
-    - echo "${SSH_PROD_PRIVATE}" | ssh-add -
+    - echo "$SSH_PROD_PRIVATE" | ssh-add -
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
-    - cat ~/.ssh/config
 
   stage: deploy
   tags:
