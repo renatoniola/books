@@ -12,6 +12,9 @@
 - name: Clear the cache
   command: chdir={{ DIR }} php artisan config:cache
 
+- name: Node & Npm versions 
+  command: chdir={{ DIR }} node -v && npm -v
+
 - name: Run npm install
   command: chdir={{ DIR }} npm install
 
