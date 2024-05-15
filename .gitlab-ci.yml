@@ -1,4 +1,4 @@
-image: renato1976/rnt-ansible:0.3
+image: renato1976/rnt-ansible:0.2
 
 stages:
   - deploy
