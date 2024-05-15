@@ -1,6 +1,6 @@
-FROM alpinelinux/ansible:latest
+FROM node:20.5.0
 
-RUN apk update
-RUN apk upgrade
-RUN apk add rsync
-RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main/nodejs=20.12.2-r0 npm
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get -y install rsync
+RUN apt-get -y install ansible
