@@ -1,6 +1,0 @@
----
-
-
-
-- name: Create and fill .env file 2.
-  shell: "cd {{ DIR }} && cp '{{ DIR }}.env.example' '{{ DIR }}.env'"

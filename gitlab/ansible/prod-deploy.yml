@@ -3,6 +3,5 @@
 - hosts: prod
   tasks:
     - include_tasks: tasks/copy.yml
-    - include_tasks: tasks/create-file.yml
     - include_tasks: tasks/composer.yml
     
