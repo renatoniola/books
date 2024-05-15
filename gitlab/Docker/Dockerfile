@@ -4,4 +4,4 @@ RUN apk update
 RUN apk upgrade
 RUN apk add rsync
 RUN apk add npm
-RUN apk add nodejs
+RUN apk add nodejs-current
