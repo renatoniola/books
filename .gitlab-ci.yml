@@ -19,6 +19,8 @@ deploy_production:
   environment:
     name: Production
   script:
+    - npm -v
+    - node -v
     - npm install 
     - npm run build
 
