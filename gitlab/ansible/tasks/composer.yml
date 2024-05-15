@@ -16,7 +16,7 @@
   command: chdir={{ DIR }} npm install
 
 - name: Run npm build
-  command: chdir={{ DIR }} npm run build
+  command: chdir={{ DIR }} npm run build --prod
 
 - name: Artisan migrate
   command: chdir={{ DIR }} php artisan migrate
