@@ -3,6 +3,9 @@
 # - name: Create site backup
   # command: chdir={{ DIR }} php artisan backup:run
 
+- name: Current pwd
+  command: pwd
+  
 - name: Run composer install
   command: chdir={{ DIR }} composer install --no-dev
 
