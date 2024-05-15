@@ -4,10 +4,10 @@
   command: pwd
 
 - name: Node & Npm versions 
-  command: chdir={{ DIR }} node -v && npm -v
+  command: node -v && npm -v
 
 - name: Run npm install
-  command: chdir={{ DIR }} npm install
+  command: npm install
 
 - name: Run npm build
-  command: chdir={{ DIR }} npm run build --prod
+  command: npm run build --prod
