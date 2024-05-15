@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Book;
+use App\Models\Book;
 use App\Models\BookStatus;
 use Illuminate\Support\Facades\Auth;
 

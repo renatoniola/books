@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Author;
+use App\Models\Author;
 use Illuminate\Support\Facades\Auth;
 
 class AuthorController extends Controller
