@@ -1,7 +1,7 @@
 ---
 
 - name: Current pwd
-  command: pwd
+  command: echo pwd
 
 - name: Node & Npm versions 
   command: node -v && npm -v
