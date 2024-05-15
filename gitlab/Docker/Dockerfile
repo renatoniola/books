@@ -1,4 +1,4 @@
-FROM node:20.5.0
+FROM node:20.5.0-slim
 
 RUN apt-get -y update
 RUN apt-get -y upgrade
