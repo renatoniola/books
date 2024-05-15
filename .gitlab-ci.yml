@@ -19,7 +19,8 @@ deploy_production:
   environment:
     name: Production
   script:
-    ## - composer install --optimize-autoloader --no-dev
+    - pwd
+
     - chmod 600 ./gitlab/ansible
     - cd ./gitlab/ansible
     - ansible -i inventory.yml prod -m ping -vvv
