@@ -19,7 +19,8 @@ deploy_production:
   environment:
     name: Production
   script:
-    - pwd
+    - npm install 
+    - npm run build
 
     - chmod 600 ./gitlab/ansible
     - cd ./gitlab/ansible
