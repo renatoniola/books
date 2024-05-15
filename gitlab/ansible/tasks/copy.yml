@@ -3,7 +3,7 @@
   synchronize: # Rsync
     src: "../../../"
     dest: "{{ lookup('env', 'PATH_TO_ROOT') }}"
-    delete: yes
+    delete: no
     perms: no # Don't use perm/owner/group from the build server as this is all root/root/777.
     owner: no # TODO: test to see that this is true and fix if possible.
     group: no
