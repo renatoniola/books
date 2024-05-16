@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\BookStatus;
 use Illuminate\Database\Seeder;
 
-class BookStatuses extends Seeder
+class BookStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
