@@ -40,7 +40,8 @@ class StatusButton extends Component
 
     public function hideShowClick()
     {
-        $this->dispatch('postAdded', $this->__id)->to(StatusButton::class);
+        $this->hideShow = !$this->hideShow;
+        // $this->dispatch('postAdded', $this->__id)->to(StatusButton::class);
     }
 
     public function updateBookStatusForUser($bookId, $book_status)
