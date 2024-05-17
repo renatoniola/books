@@ -15,7 +15,6 @@ class StatusButton extends Component
     public $statusName;
     public $hideShow = false;
    
-
     protected $listeners = ['postAdded' => 'closeOtherDropdowns'];
  
     public function closeOtherDropdowns($id)
@@ -40,8 +39,7 @@ class StatusButton extends Component
 
     public function hideShowClick()
     {
-        $this->hideShow = !$this->hideShow;
-        // $this->dispatch('postAdded', $this->__id)->to(StatusButton::class);
+        $this->dispatch('postAdded', $this->__id)->to(StatusButton::class);
     }
 
     public function updateBookStatusForUser($bookId, $book_status)
