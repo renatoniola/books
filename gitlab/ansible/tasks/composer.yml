@@ -9,6 +9,9 @@
 - name: Maintainance mode
   command: chdir={{ DIR }} php artisan down
 
+- name: link assets folder
+  command: php artisan storage:link
+
 - name: Clear the cache
   command: chdir={{ DIR }} php artisan config:cache
 
