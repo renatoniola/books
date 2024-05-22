@@ -17,7 +17,8 @@ class Author extends Model
 
     ];
 
-    public function book (): HasMany {
+    public function book(): HasMany
+    {
         return $this->HasMany(Book::class);
     }
 }

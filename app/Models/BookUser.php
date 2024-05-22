@@ -10,7 +10,7 @@ use App\models\BookStatus;
 class BookUser extends Model
 {
     use HasFactory;
-    protected $table="book_user";
+    protected $table = "book_user";
 
     protected $fillable = [
         'book_status',

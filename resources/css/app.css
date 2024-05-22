@@ -1,3 +1,10 @@
 @tailwind base;
+
+@layer base {
+    h1 {
+      @apply text-5xl;
+    }
+}
+
 @tailwind components;
 @tailwind utilities;

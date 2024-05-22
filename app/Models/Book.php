@@ -22,6 +22,11 @@ class Book extends Model
 
     ];
 
+    public function getRouteKeyName()
+    {
+        return 'book_slug';
+    }
+
     public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class);
@@ -37,7 +42,7 @@ class Book extends Model
         $books = $this->belongsToMany(Book::class, 'book_user')
             ->withPivot(['book_id', 'user_id', 'book_status']);
         if (Auth::user()) {
-          $books->where('user_id', '=', Auth::user()->id);
+            $books->where('user_id', '=', Auth::user()->id);
         }
         return $books;
     }

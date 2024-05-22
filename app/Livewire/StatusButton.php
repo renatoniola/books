@@ -6,47 +6,48 @@ use App\Models\BookStatus;
 use Livewire\Component;
 use Auth;
 use App\Models\BookUser;
+use Illuminate\View\View;
 
 class StatusButton extends Component
 {
-    public $status;
+    public string $status;
     public $statuses;
-    public $book_id;
-    public $statusName;
-    public $hideShow = false;
-   
+    public int $book_id;
+    public string $statusName;
+    public bool $hideShow = false;
+
     protected $listeners = ['postAdded' => 'closeOtherDropdowns'];
- 
-    public function closeOtherDropdowns($id)
+
+    public function closeOtherDropdowns($id): void
     {
-        if($this->__id === $id) {
+        if ($this->__id === $id) {
             $this->hideShow = !$this->hideShow;
         } else {
             $this->hideShow = false;
         }
-        
     }
 
-    public function mount() {
+    public function mount(): void
+    {
         $this->statuses = BookStatus::all()->keyBy('id');
         $this->statusName = $this->status ? $this->statuses[$this->status]->status : 'not added';
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.status-button');
     }
 
-    public function hideShowClick()
+    public function hideShowClick(): void
     {
         $this->dispatch('postAdded', $this->__id)->to(StatusButton::class);
     }
 
-    public function updateBookStatusForUser($bookId, $book_status)
+    public function updateBookStatusForUser($bookId, $book_status): void
     {
 
         $this->hideShowClick();
-        
+
         $res = BookUser::updateOrcreate(
             [
                 'user_id' => Auth::user()->id,

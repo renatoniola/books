@@ -34,7 +34,7 @@ class UserResource extends Resource
                     ->label('Role')
                     ->required()
                     ->options(Role::all()->pluck('role', 'id'))
-                   
+
             ]);
     }
 
@@ -46,11 +46,11 @@ class UserResource extends Resource
                     ->label('Username'),
                 Tables\Columns\TextColumn::make('email')
                     ->label('Email'),
-          
+
                     Tables\Columns\TextColumn::make('role.role')
                     ->label('Role')
                     ->numeric()
-             
+
 
             ])
             ->filters([

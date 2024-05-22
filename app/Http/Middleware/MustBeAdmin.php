@@ -17,7 +17,7 @@ class MustBeAdmin
     {
         // dd($request->path());
         if (auth()->user()?->role_id !== 1 && $request->path() !== 'admin/logout') {
-           return redirect('/');
+            return redirect('/');
         }
         return $next($request);
     }

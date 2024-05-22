@@ -51,9 +51,9 @@ class AuthorResource extends Resource
                     return $query
                         ->orderBy('author_lastname', $direction)
                         ->orderBy('author_name', $direction);
-                        
+
                 }),
-            
+
                 Tables\Columns\ImageColumn::make('author_image_path'),
             ])
             ->filters([

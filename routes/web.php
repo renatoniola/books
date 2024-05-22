@@ -9,7 +9,13 @@ Route::get('/', function () {
 });
 
 // Page routes
-Route::get('/books', [BookController::class, 'books'])->name('all-books');
-Route::get('/my-books', [BookController::class, 'myBooks'])->middleware('auth')->name('my-books');
-Route::get('/my-authors', [AuthorController::class, 'myAuthors'])->middleware('auth')->name('my-authors');
-Route::get('/authors', [AuthorController::class, 'authors'])->name('all-authors');
+Route::controller(BookController::class)->group(function () {
+    Route::get('/book/{book}', 'show')->name('book');
+    Route::get('/books', 'index')->name('all-books');
+    Route::get('/my-books', 'myBooks')->middleware('auth')->name('my-books');
+});
+
+Route::controller(AuthorController::class)->group(function () {
+    Route::get('/my-authors', 'myAuthors')->middleware('auth')->name('my-authors');
+    Route::get('/authors', 'index')->name('all-authors');
+});
