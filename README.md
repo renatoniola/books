@@ -1,16 +1,18 @@
-# personal project to learn Laravel and its ( still in the making ) 
-   - filament (Admin panel)
-   - livewire
+# Personal project to learn Laravel and its ( still in the making ) 
+   - Filament (Admin panel)
+   - Livewire
    - Mysql
-   - blade components
+   - Blade components
    - Docker
    - CI/CD (Gitlab)
+   - Ansible
 
 ## TODOS
 
    - APIs
-   - Add phing and cs-fixer
-   - Add testing in DevOp
+   - Add phing and cs-fixer.
+   - Add testing in DevOp.
+   - Refactor Ansible tasks.
 
 ## Build the linux image
       docker build --platform linux/amd64 -t renato1976/rnt-ansible:0.1 .
