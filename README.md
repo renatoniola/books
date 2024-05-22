@@ -1,4 +1,4 @@
-# Personal project to learn Laravel and its ( still in the making ) 
+# Goodreads clone to learn Laravel and its ( still in the making ) 
    - Filament (Admin panel)
    - Livewire
    - Mysql
