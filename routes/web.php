@@ -5,7 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\AuthorController;
 
 Route::get('/', function () {
-    return view('welcome')->with('title', 'welcommeee page');
+    return view('dashboard')->with('title', 'welcommeee page');
 });
 
 // Page routes

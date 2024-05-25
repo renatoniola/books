@@ -23,7 +23,11 @@ class BookController extends Controller
     {
 
         return view('book', [
-            'book' =>  $book,
+            'book' =>  Book::leftJoin('authors',
+                function ($join) {
+                    $join->on('books.author_id', '=', 'authors.id');
+                }
+            )->where('book_slug', $book->book_slug)->first(),
         ]);
     }
 
