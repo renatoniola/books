@@ -16,6 +16,20 @@ class Author extends Model
         'author_image_path'
 
     ];
+   
+
+
+    public function getRouteKeyName()
+    {
+        return 'author_slug';
+    }
+
+    
+    protected $appends = ['fullname'];
+    public function getFullName()
+    {
+       return "$this->author_name $this->author_lastname";
+    }
 
     public function book(): HasMany
     {

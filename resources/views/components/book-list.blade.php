@@ -5,7 +5,7 @@
       <img class="h-12 w-12 flex-none object-cover rounded-full bg-gray-50" src="{{ asset('storage/' . $book->book_image_path) }}" alt="{{ $book->book_title }}">
       <div class="min-w-0 flex-auto">
         <p class="text-sm font-semibold leading-6 text-gray-900"><a href="{{ route('book', $book->book_slug) }}">{{ $book->book_title }}</a></p>
-        <p class="mt-1 truncate text-xs leading-5 text-gray-500">By: {{ $book->author->author_name }} {{ $book->author->author_lastname }}</p>
+        <p class="mt-1 truncate text-xs leading-5 text-gray-500">By: <a href="{{ route('author', $book->author->author_slug) }}">{{ $book->author->getFullName() }}</a></p>
       </div>
     </div>
     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">

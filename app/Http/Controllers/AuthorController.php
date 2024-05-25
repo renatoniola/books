@@ -17,9 +17,11 @@ class AuthorController extends Controller
         ]);
     }
 
-    public function show(): void
+    public function show(Author $author): View
     {
-
+        return view('author', [
+            'author' =>  Author::where('author_slug', $author->author_slug)->first(),
+        ]);
     }
 
     public function myAuthors(): View

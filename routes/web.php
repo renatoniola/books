@@ -16,6 +16,7 @@ Route::controller(BookController::class)->group(function () {
 });
 
 Route::controller(AuthorController::class)->group(function () {
+    Route::get('/author/{author}', 'show')->name('author');
     Route::get('/my-authors', 'myAuthors')->middleware('auth')->name('my-authors');
     Route::get('/authors', 'index')->name('all-authors');
 });

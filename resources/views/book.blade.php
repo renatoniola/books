@@ -17,7 +17,9 @@
             </aside>
             <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
                 <h1 >{{ $book->book_title }}</h1>
-                <p class="text-gray-600" >By: <a href="{{ $book->author_id }}">{{ $book->author_name }} {{ $book->author_lastname }}</a></p>
+                <p class="text-gray-600" >By: 
+                    <a href="{{ route('author', $book->author->author_slug) }}">{{ $book->author->getFullName() }}</a>
+                </p>
                 
                 <p class="mt-5">{{ $book->book_descr }}</p>
                 
