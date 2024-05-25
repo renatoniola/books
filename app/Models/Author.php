@@ -17,15 +17,12 @@ class Author extends Model
 
     ];
    
-
-
     public function getRouteKeyName()
     {
         return 'author_slug';
     }
 
     
-    protected $appends = ['fullname'];
     public function getFullName()
     {
        return "$this->author_name $this->author_lastname";

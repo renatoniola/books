@@ -1,4 +1,3 @@
-
 <x-layout :title="$author->getFullName()">
   
     <div class="mx-auto flex flex-row flex-wrap py-4 max-w-7xl mt-12">
@@ -9,7 +8,6 @@
         </aside>
         <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
             <h1 >{{ $author->getFullName() }}</h1>
-            
         </main>
     </div>
 
