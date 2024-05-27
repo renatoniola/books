@@ -19,8 +19,13 @@ class AuthorController extends Controller
 
     public function show(Author $author): View
     {
+        $authorCached = cache()->remember("author.{$author->author_slug}", 5, function () use ($author) {
+            return Author::where('author_slug', $author->author_slug)->first();
+        });
+       
         return view('author', [
-            'author' =>  Author::where('author_slug', $author->author_slug)->first(),
+           'author' =>  $authorCached,
+           'title' => 'Authors'
         ]);
     }
 

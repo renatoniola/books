@@ -21,13 +21,16 @@ class BookController extends Controller
 
     public function show(Book $book): View
     {
-
-        return view('book', [
-            'book' =>  Book::leftJoin('authors',
+        $bookCached = cache()->remember("book.{$book->book_slug}", 5, function () use ($book) {
+            return Book::leftJoin('authors',
                 function ($join) {
                     $join->on('books.author_id', '=', 'authors.id');
                 }
-            )->where('book_slug', $book->book_slug)->first(),
+            )->where('book_slug', $book->book_slug)->first();
+        });
+       
+        return view('book', [
+           'book' =>  $bookCached,
         ]);
     }
 
