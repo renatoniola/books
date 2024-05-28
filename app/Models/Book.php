@@ -18,7 +18,8 @@ class Book extends Model
         'book_excerpt',
         'author_id',
         'book_image_path',
-        'book_year_published'
+        'book_year_published',
+        'book_slug'
 
     ];
 

@@ -29,6 +29,10 @@ class AuthorResource extends Resource
                 Forms\Components\TextInput::make('author_lastname')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('author_slug')
+                    ->label('Slug')
+                    ->maxLength(255)
+                    ->disabled(),
                 Forms\Components\FileUpload::make('author_image_path')
                     ->avatar()
                     ->disk('public')

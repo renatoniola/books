@@ -31,8 +31,8 @@ class BookResource extends Resource
 
                 Forms\Components\TextInput::make('book_slug')
                     ->label('Slug')
-                    ->required()
-                    ->maxLength(255),
+                    ->maxLength(255)
+                    ->disabled(),
 
                 RichEditor::make('book_descr')
                     ->label('Description')
