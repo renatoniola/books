@@ -33,7 +33,7 @@ class UserResource extends Resource
                 Forms\Components\Select::make('role_id')
                     ->label('Role')
                     ->required()
-                    ->options(Role::all()->pluck('role', 'id'))
+                    ->options(Role::pluck('role', 'id'))
 
             ]);
     }

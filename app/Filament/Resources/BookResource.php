@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use App\Models\Author;
+use Illuminate\Support\Facades\DB;
 use Filament\Forms\Components\Component;
 use Filament\Forms\Components\RichEditor;
 
@@ -69,7 +70,7 @@ class BookResource extends Resource
                     ->required(),
                 Forms\Components\Select::make('author_id')
                     ->label('Author')
-                    ->options(Author::all()->pluck('author_lastname', 'id'))
+                    ->options(Author::pluck(DB::raw('CONCAT(author_name," ",author_lastname) AS full_name'), 'id'))
                     ->searchable(),
                 Forms\Components\TextInput::make('book_year_published')
                     ->label('Year')

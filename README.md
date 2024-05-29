@@ -1,4 +1,4 @@
-# Goodreads clone to learn Laravel and its ( still in the making ) 
+# Goodreads clone ( still in the making ) 
    - Filament (Admin panel)
    - Livewire
    - Mysql

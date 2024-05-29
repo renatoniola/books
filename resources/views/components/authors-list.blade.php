@@ -5,7 +5,6 @@
       <img class="h-12 w-12 flex-none object-cover rounded-full bg-gray-50" src="{{ asset('storage/' . $author->author_image_path) }}" alt="{{ $author->author_name }} {{ $author->author_lastname }}">
       <div class="min-w-0 flex-auto">
         <p class="text-sm font-semibold leading-6 text-gray-900"><a href="{{ route('author', $author->author_slug) }}">{{ $author->getFullName() }}</a></p>
-        <p class="mt-1 truncate text-xs leading-5 text-gray-500">leslie.alexander@example.com</p>
       </div>
     </div>
     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">

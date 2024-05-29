@@ -5,6 +5,7 @@ namespace App\Filament\Resources\AuthorResource\Pages;
 use App\Filament\Resources\AuthorResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use Illuminate\Support\Facades\Cache;
 
 class EditAuthor extends EditRecord
 {
@@ -15,5 +16,11 @@ class EditAuthor extends EditRecord
         return [
             Actions\DeleteAction::make(),
         ];
+    }
+
+    protected function afterSave(): void
+    {
+       // Remove cache of author after being edited
+       Cache::forget('author.' . $this->record->author_slug);
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\BookStatus;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Cache;
 
 class BookController extends Controller
 {
@@ -21,7 +22,7 @@ class BookController extends Controller
 
     public function show(Book $book): View
     {
-        $bookCached = cache()->remember("book.{$book->book_slug}", 5, function () use ($book) {
+        $bookCached = Cache::remember("book.{$book->book_slug}", 5, function () use ($book) {
             return Book::leftJoin('authors',
                 function ($join) {
                     $join->on('books.author_id', '=', 'authors.id');

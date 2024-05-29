@@ -1,9 +1,13 @@
 image: renato1976/rnt-ansible:0.16
 
 stages:
+  - test
   - deploy
 
-# Production
+Test:
+  stage: test
+
+# Deploy to Production
 deploy_production:
   before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Author;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Cache;
 
 class AuthorController extends Controller
 {
@@ -19,7 +20,7 @@ class AuthorController extends Controller
 
     public function show(Author $author): View
     {
-        $authorCached = cache()->remember("author.{$author->author_slug}", 5, function () use ($author) {
+        $authorCached = Cache::remember("author.{$author->author_slug}", 5, function () use ($author) {
             return Author::where('author_slug', $author->author_slug)->first();
         });
        
