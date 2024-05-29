@@ -4,7 +4,7 @@ stages:
   - test
   - deploy
 
-test:
+test_code:
   stage: test
 
 # Deploy to Production
