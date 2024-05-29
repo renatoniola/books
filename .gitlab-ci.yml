@@ -8,6 +8,7 @@ test_code:
   stage: test
   script:
     - echo "testing .."
+    - composer phpstan
 
 # Deploy to Production
 deploy_production:
