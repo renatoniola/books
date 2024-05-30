@@ -1,4 +1,4 @@
-image: renato1976/rnt-ansible:0.18
+image: renato1976/rnt-ansible:0.19
 
 stages:
   - test
@@ -9,7 +9,7 @@ test_code:
   script:
     - echo "testing .."
     - pwd
-    - cp gitlab/Docker/php.ini-test /etc/php/8.2/cli/php.ini-test
+    - cp gitlab/Docker/php.ini /etc/php/8.2/cli/php.ini
     - ls /etc/php/8.2/cli
     - composer update --lock
     - composer install
