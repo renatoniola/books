@@ -9,6 +9,7 @@ test_code:
   script:
     - echo "testing .."
     - pwd
+    - cp gitlab/Docker/php.ini-test /etc/php/8.2/cli/php.ini-test
     - composer update --lock
     - composer install
     - composer phpstan
