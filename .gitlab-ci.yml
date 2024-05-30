@@ -10,6 +10,7 @@ test_code:
     - echo "testing .."
     - pwd
     - cp gitlab/Docker/php.ini-test /etc/php/8.2/cli/php.ini-test
+    - ls /etc/php/8.2/cli
     - composer update --lock
     - composer install
     - composer phpstan
