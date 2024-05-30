@@ -9,6 +9,7 @@ test_code:
   script:
     - echo "testing .."
     - pwd
+    - composer phpstan
 
 # Deploy to Production
 deploy_production:
