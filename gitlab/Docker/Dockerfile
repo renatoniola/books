@@ -5,5 +5,5 @@ RUN apt-get -y upgrade
 RUN apt-get -y install rsync
 RUN apt-get -y install ansible
 
-RUN apt-get -y install curl php-cli php-mbstring git unzip
+RUN apt-get -y install curl php-cli php-mbstring php-xml git unzip
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
