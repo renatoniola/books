@@ -9,6 +9,7 @@ test_code:
   script:
     - echo "testing .."
     - pwd
+    - composer update --lock
     - composer install
     - composer phpstan
 
