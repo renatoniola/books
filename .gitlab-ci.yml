@@ -1,7 +1,6 @@
 image: renato1976/rnt-ansible:0.19
 
 stages:
-  - test
   - deploy
 
 test_code:
@@ -29,8 +28,6 @@ deploy_production:
   tags:
     - Docker
   when: manual
-  rules:
-    when: always
   environment:
     name: Production
   script:
