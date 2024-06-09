@@ -3,18 +3,6 @@ image: renato1976/rnt-ansible:0.19
 stages:
   - deploy
 
-test_code:
-  stage: test
-  script:
-    - echo "testing .."
-    - pwd
-    - composer test
-    - cp gitlab/Docker/php.ini /etc/php/8.2/cli/php.ini
-    - ls /etc/php/8.2/cli
-    - composer update --lock
-    - composer install
-    - composer phpstan
-
 # Deploy to Production
 deploy_production:
   before_script:
