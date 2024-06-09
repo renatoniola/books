@@ -12,7 +12,7 @@
     </head>
 
     <body>
-      <x-header></x-header>
+      @livewire('header')
 
       {{ $slot }}
       @vite('resources/js/app.js') 

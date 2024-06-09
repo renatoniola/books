@@ -4,8 +4,8 @@
     <div class="flex min-w-0 gap-x-4">
       <img class="h-12 w-12 flex-none object-cover rounded-full bg-gray-50" src="{{ asset('storage/' . $book->book_image_path) }}" alt="{{ $book->book_title }}">
       <div class="min-w-0 flex-auto">
-        <p class="text-sm font-semibold leading-6 text-gray-900"><a href="{{ route('book', $book->book_slug) }}">{{ $book->book_title }}</a></p>
-        <p class="mt-1 truncate text-xs leading-5 text-gray-500">By: <a href="{{ route('author', $book->author->author_slug) }}">{{ $book->author->getFullName() }}</a></p>
+        <p class="text-sm font-semibold leading-6 text-gray-900"><a wire:navigate href="{{ route('book', $book->book_slug) }}">{{ $book->book_title }}</a></p>
+        <p class="mt-1 truncate text-xs leading-5 text-gray-500">By: <a wire:navigate href="{{ route('author', $book->author->author_slug) }}">{{ $book->author->getFullName() }}</a></p>
       </div>
     </div>
     <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
@@ -15,8 +15,8 @@
         @if (!Auth::guest()) 
         @livewire('status-button',
         [
-        'status' => !empty($book->myBooks[0]->pivot->book_status) ? $book->myBooks[0]->pivot->book_status : 0,
-        'book_id' => $book->id
+          'status' => !empty($book->myBooks[0]->pivot->book_status) ? $book->myBooks[0]->pivot->book_status : 0,
+          'book_id' => $book->id
         ])
         @endif
 

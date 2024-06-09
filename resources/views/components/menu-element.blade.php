@@ -6,7 +6,7 @@
         </svg>
     </div>
     <div class="flex-auto">
-        <a href="{{ route($routename) }}" class="block font-semibold text-gray-900">
+        <a wire:navigate href="{{ route($routename) }}" class="block font-semibold text-gray-900">
             {{ $title }}
             <span class="absolute inset-0"></span>
         </a>

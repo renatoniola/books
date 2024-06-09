@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\AuthorResource\Pages;
 
 use App\Filament\Resources\AuthorResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 use App\Services\UtilsService;
 
@@ -13,9 +12,9 @@ class CreateAuthor extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-       // Temporary slug till Id is generated
-       $data['author_slug']  = UtilsService::generateSlug(0, ".{md5(microtime())}.{$data['author_name']} {$data['author_lastname']}");
-       return $data;
+        // Temporary slug till Id is generated
+        $data['author_slug']  = UtilsService::generateSlug(0, ".{md5(microtime())}.{$data['author_name']} {$data['author_lastname']}");
+        return $data;
     }
 
     protected function afterCreate(): void

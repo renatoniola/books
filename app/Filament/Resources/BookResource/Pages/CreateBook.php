@@ -12,15 +12,14 @@ class CreateBook extends CreateRecord
 
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-       // Temporary slug till Id is generated
-       $data['book_slug']  = md5(microtime()) .  $data['book_title'];
-       return $data;
+        // Temporary slug till Id is generated
+        $data['book_slug']  = md5(microtime()) .  $data['book_title'];
+        return $data;
     }
 
     protected function afterCreate(): void
     {
         $this->record['book_slug'] = UtilsService::generateSlug($this->record['id'], $this->record['book_title']);
         $this->record->save();
-        
     }
 }

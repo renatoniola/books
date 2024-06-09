@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookController;
-use App\Http\Controllers\AuthorController;
+use App\Livewire\BookController;
+use App\Livewire\AuthorController;
 
 Route::get('/', function () {
-    return view('dashboard')->with('title', 'welcommeee page');
-});
+    return view('livewire.dashboard')
+    ->with('title', 'welcommeee page')
+    ;
+})->name('dashboard');
 
 // Page routes
 Route::controller(BookController::class)->group(function () {

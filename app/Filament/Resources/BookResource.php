@@ -11,7 +11,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use App\Models\Author;
 use Illuminate\Support\Facades\DB;
-use Filament\Forms\Components\Component;
 use Filament\Forms\Components\RichEditor;
 
 class BookResource extends Resource
@@ -23,7 +22,8 @@ class BookResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
 
                 Forms\Components\TextInput::make('book_title')
                     ->label('Title')
@@ -38,7 +38,8 @@ class BookResource extends Resource
                 RichEditor::make('book_descr')
                     ->label('Description')
                     ->required()
-                    ->toolbarButtons([
+                    ->toolbarButtons(
+                        [
                         'attachFiles',
                         'blockquote',
                         'bold',
@@ -53,7 +54,8 @@ class BookResource extends Resource
                         'strike',
                         'underline',
                         'undo',
-                    ]),
+                        ]
+                    ),
 
 
                 Forms\Components\Textarea::make('book_excerpt')
@@ -76,13 +78,15 @@ class BookResource extends Resource
                     ->label('Year')
                     ->maxLength(4),
 
-            ]);
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 Tables\Columns\ImageColumn::make('book_image_path'),
                 Tables\Columns\TextColumn::make('book_title')
                     ->label('Title')
@@ -99,18 +103,27 @@ class BookResource extends Resource
                 Tables\Columns\TextColumn::make('book_year_published')
                     ->label('Year')
                     ->searchable(),
-            ])
-            ->filters([
+                ]
+            )
+            ->filters(
+                [
                 //
-            ])
-            ->actions([
+                ]
+            )
+            ->actions(
+                [
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
+                ]
+            )
+            ->bulkActions(
+                [
+                Tables\Actions\BulkActionGroup::make(
+                    [
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                    ]
+                ),
+                ]
+            );
     }
 
     public static function getRelations(): array

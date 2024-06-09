@@ -17,22 +17,19 @@ class Author extends Model
         'author_slug',
 
     ];
-   
+
     public function getRouteKeyName(): string
     {
         return 'author_slug';
     }
 
-    
     public function getFullName(): string
     {
-       return "$this->author_name $this->author_lastname";
+        return "$this->author_name $this->author_lastname";
     }
 
     public function book(): HasMany
     {
-        return $this->HasMany(Book::class);
+        return $this->hasMany(Book::class);
     }
-
-   
 }

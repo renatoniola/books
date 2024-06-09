@@ -13,13 +13,14 @@
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
+        "enlightn/enlightn": "^2.10",
         "fakerphp/faker": "^1.23",
-        "friendsofphp/php-cs-fixer": "^3.57",
         "larastan/larastan": "^2.0",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
+        "nunomaduro/phpinsights": "^2.11",
         "phpunit/phpunit": "^10.5",
         "spatie/laravel-ignition": "^2.4"
     },
@@ -57,7 +58,15 @@
         ],
         "test": [
             "./vendor/bin/phpunit tests"
+        ],
+        "pint": [
+            "./vendor/bin/pint --test"
+        ],
+        "enlightn": [
+            "@php artisan enlightn"
         ]
+
+
     },
     "extra": {
         "laravel": {
@@ -70,7 +79,8 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
     "minimum-stability": "stable",

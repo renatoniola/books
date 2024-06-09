@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AuthorResource\Pages;
-use App\Filament\Resources\AuthorResource\RelationManagers;
 use App\Models\Author;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,7 +10,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AuthorResource extends Resource
 {
@@ -22,7 +20,8 @@ class AuthorResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 Forms\Components\TextInput::make('author_name')
                     ->required()
                     ->maxLength(255),
@@ -39,38 +38,53 @@ class AuthorResource extends Resource
                     ->visibility('public')
                     ->directory('authors')
                     ->required(),
-            ]);
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 Tables\Columns\TextColumn::make('author_name')
-                ->label('Author')
-                ->formatStateUsing(function ($state, Author $author) {
-                    return $author->author_name . ' ' . $author->author_lastname;
-                })
-                ->sortable(query: function (Builder $query, string $direction): Builder {
-                    return $query
-                        ->orderBy('author_lastname', $direction)
-                        ->orderBy('author_name', $direction);
+                    ->label('Author')
+                    ->formatStateUsing(
+                        function ($state, Author $author) {
+                            return $author->author_name . ' ' . $author->author_lastname;
+                        }
+                    )
+                ->sortable(
+                    query: function (Builder $query, string $direction): Builder {
+                        return $query
+                            ->orderBy('author_lastname', $direction)
+                            ->orderBy('author_name', $direction);
 
-                }),
+                    }
+                ),
 
                 Tables\Columns\ImageColumn::make('author_image_path'),
-            ])
-            ->filters([
+                ]
+            )
+            ->filters(
+                [
                 //
-            ])
-            ->actions([
+                ]
+            )
+            ->actions(
+                [
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
+                ]
+            )
+            ->bulkActions(
+                [
+                Tables\Actions\BulkActionGroup::make(
+                    [
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                    ]
+                ),
+                ]
+            );
     }
 
     public static function getRelations(): array

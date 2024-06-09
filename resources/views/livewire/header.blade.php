@@ -1,9 +1,19 @@
 <header class="bg-white">
-  <nav class="mx-auto flex max-w-7xl items-center justify-between pt-6 pb-6 lg:px-8" aria-label="Global">
+  <nav x-data="{ 
+  currentMenu: '' ,
+  toggle (menuName) {
+     if (menuName === this.currentMenu ) {
+        return '';
+     } else {
+      return menuName;
+      }
+  }  
+  }" class="mx-auto flex max-w-7xl items-center justify-between pt-6 pb-6 lg:px-8" aria-label="Global">
     <div class="flex">
-      <a href="#" class="-m-1.5 p-1.5">
-        <span class="sr-only">Your Company</span>
-        <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+      <a wire:navigate href="{{ route('dashboard') }}" class="flex -m-1.5 p-1.5">
+        <span class="sr-only">BOOKS</span>
+        <img class="h-8 w-8" src="{{ Vite::asset('resources/images/books.jpeg') }}">
+        <div class="ml-6 p-1.5">BOOKS</div>
       </a>
     </div>
     <div class="flex lg:hidden">
@@ -15,8 +25,8 @@
       </button>
     </div>
     <div class="hidden lg:flex lg:gap-x-12 ml-10">
-      <div class="relative" x-data="{ open: false }">
-        <button x-on:click="open = ! open" type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
+      <div class="relative">
+        <button x-on:click=" currentMenu = toggle('books') " type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
           Books
           <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
@@ -33,7 +43,7 @@
             From: "opacity-100 translate-y-0"
             To: "opacity-0 translate-y-1"
         -->
-        <div x-show="open" x-transition class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+        <div x-show="currentMenu === 'books'" x-transition class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
           <div class="p-4">
 
 
@@ -47,8 +57,8 @@
         </div>
       </div>
 
-      <div class="relative" x-data="{ open: false }">
-        <button x-on:click="open = ! open" type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
+      <div class="relative">
+        <button x-on:click="currentMenu = toggle('authors')" type="button" class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900" aria-expanded="false">
           Authors
           <svg class="h-5 w-5 flex-none text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
@@ -65,7 +75,7 @@
             From: "opacity-100 translate-y-0"
             To: "opacity-0 translate-y-1"
         -->
-        <div x-show="open" x-transition class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+        <div x-show="currentMenu === 'authors'" x-transition class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
           <div class="p-4">
 
             <x-menu-element title="All authors" undertitle="All authors" routename="all-authors"></x-menu-element>
@@ -100,8 +110,8 @@
     <div class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
       <div class="flex items-center justify-between">
         <a href="#" class="-m-1.5 p-1.5">
-          <span class="sr-only">Your Company</span>
-          <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="">
+          <span class="sr-only">Books</span>
+          <img class="h-8 w-8" src="{{ Vite::asset('resources/images/books.jpeg') }}">Books
         </a>
         <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
           <span class="sr-only">Close menu</span>

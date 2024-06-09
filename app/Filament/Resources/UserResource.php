@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use App\Models\Role;
 use Filament\Forms;
@@ -11,8 +10,6 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
@@ -23,7 +20,8 @@ class UserResource extends Resource
     public static function form(Form $form): Form
     {
         return $form
-            ->schema([
+            ->schema(
+                [
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
@@ -35,35 +33,46 @@ class UserResource extends Resource
                     ->required()
                     ->options(Role::pluck('role', 'id'))
 
-            ]);
+                ]
+            );
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
+            ->columns(
+                [
                 Tables\Columns\TextColumn::make('name')
                     ->label('Username'),
                 Tables\Columns\TextColumn::make('email')
                     ->label('Email'),
 
                     Tables\Columns\TextColumn::make('role.role')
-                    ->label('Role')
-                    ->numeric()
+                        ->label('Role')
+                        ->numeric()
 
 
-            ])
-            ->filters([
+                ]
+            )
+            ->filters(
+                [
                 //
-            ])
-            ->actions([
+                ]
+            )
+            ->actions(
+                [
                 Tables\Actions\EditAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
+                ]
+            )
+            ->bulkActions(
+                [
+                Tables\Actions\BulkActionGroup::make(
+                    [
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
+                    ]
+                ),
+                ]
+            );
     }
 
     public static function getRelations(): array

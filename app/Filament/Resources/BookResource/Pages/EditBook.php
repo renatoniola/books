@@ -20,7 +20,7 @@ class EditBook extends EditRecord
 
     protected function afterSave(): void
     {
-       // Remove cache of book after being edited
-       Cache::forget('book.' . $this->record->book_slug);
+        // Remove cache of book after being edited
+        Cache::forget('book.' . $this->record->book_slug);
     }
 }
