@@ -29,6 +29,8 @@ deploy_production:
   tags:
     - Docker
   when: manual
+  rules:
+    when: always
   environment:
     name: Production
   script:
