@@ -7,6 +7,7 @@
      } else {
       return menuName;
       }
+     
   }  
   }" class="mx-auto flex max-w-7xl items-center justify-between pt-6 pb-6 lg:px-8" aria-label="Global">
     <div class="flex">
@@ -111,7 +112,7 @@
       <div class="flex items-center justify-between">
         <a href="#" class="-m-1.5 p-1.5">
           <span class="sr-only">Books</span>
-          <img class="h-8 w-8" src="{{ Vite::asset('resources/images/books.jpeg') }}">Books
+         <img class="h-8 w-8" src="{{ Vite::asset('resources/images/books.jpeg') }}">>Books
         </a>
         <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
           <span class="sr-only">Close menu</span>

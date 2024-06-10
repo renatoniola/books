@@ -1,4 +1,14 @@
-<ul role="list" class="divide-y divide-gray-100 w-full">
+<ul x-data="{
+  currentMenuItem: '' ,
+  cssClass: '',
+  toggle (menuName) {
+     if (menuName === this.currentMenuItem ) {
+        return 0;
+     } else {
+        return menuName;
+      }
+     
+  }}"role="list" class="divide-y divide-gray-100 w-full">
   @foreach ($books as $book)
   <li class="flex justify-between gap-x-6 py-5">
     <div class="flex min-w-0 gap-x-4">
