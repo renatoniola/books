@@ -22,7 +22,7 @@
         <div class="py-1" role="none">
             <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
             @foreach ($statuses as $currentStatus)
-              <span wire:click="updateBookStatusForUser({{ $book_id }}, {{ $currentStatus->id }})" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{{ $currentStatus->status }}</span>
+              <span x-on:click="currentMenuItem = ''" wire:click="updateBookStatusForUser({{ $book_id }}, {{ $currentStatus->id }})" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">{{ $currentStatus->status }}</span>
             @endforeach
         </div>
     </div>
