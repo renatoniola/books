@@ -9,6 +9,7 @@
    
     <!-- Stylesheet -->
     @vite('resources/css/app.css')
+    @livewireStyles
     </head>
 
     <body>

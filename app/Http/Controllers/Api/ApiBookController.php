@@ -20,4 +20,13 @@ class ApiBookController extends Component
             ]
         );
     }
+
+    public function show(Book $id): JsonResponse
+    {
+        return response()->json(
+            [
+               'book' =>  Book::find($id),
+            ]
+        );
+    }
 }

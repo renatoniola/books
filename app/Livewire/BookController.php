@@ -14,7 +14,8 @@ class BookController extends Component
 {
     public function index(): View
     {
-
+        // phpinfo();
+        $ciao = '';
         // Benchmark::dd(fn() => Book::with('myBooks')->paginate(10));
         return view(
             'livewire.books',
@@ -28,6 +29,7 @@ class BookController extends Component
 
     public function show(Book $book): View
     {
+
         $bookCached = Cache::remember(
             "book.{$book->book_slug}",
             5,
