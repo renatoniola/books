@@ -16,11 +16,13 @@ class StatusButton extends Component
     public int $book_id;
     public string $statusName;
     public bool $hideShow = false;
+    public string $position = '';
 
     public function mount(): void
     {
         $this->statuses = BookStatus::all()->keyBy('id');
         $this->statusName = $this->status ? $this->statuses[$this->status]->status : 'not added';
+        $this->position = $this->position === 'left' ? 'left-0' : 'right-0';
     }
 
     public function render(): View

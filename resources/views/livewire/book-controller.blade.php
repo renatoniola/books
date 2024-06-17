@@ -1,6 +1,16 @@
 <x-layout :title="$book->book_title">
   
-    <div class="mx-auto flex flex-row flex-wrap py-4 max-w-7xl mt-12">
+    <div x-data="{
+        currentMenuItem: '' ,
+        cssClass: '',
+        toggle (menuName) {
+           if (menuName === this.currentMenuItem ) {
+              return 0;
+           } else {
+              return menuName;
+            }
+           
+        }}" class="mx-auto flex flex-row flex-wrap py-4 max-w-7xl mt-12">
         <aside class="w-full sm:w-1/3 md:w-1/4 px-2">
             <div class="sticky top-0 bg-white rounded-xl w-full">
                 <img class="w-60 object-cover rounded-md bg-gray-50" src="{{ asset('storage/' . $book->book_image_path) }}" alt="{{ $book->book_title }}"/>
@@ -9,7 +19,8 @@
                 @livewire('status-button',
                 [
                 'status' => !empty($book->myBooks[0]->pivot->book_status) ? $book->myBooks[0]->pivot->book_status : 0,
-                'book_id' => $book->id
+                'book_id' => $book->id,
+                'position' => 'left',
                 ])
                 @endif
             </div>
