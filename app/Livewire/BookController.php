@@ -2,39 +2,39 @@
 
 namespace App\Livewire;
 
-use Livewire\Component;
 use App\Models\Book;
 use App\Models\BookStatus;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Cache;
+use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Support\Benchmark;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\View\View;
+use Livewire\Component;
 
 class BookController extends Component
 {
     public function index(): View
     {
-        // phpinfo();
-        $ciao = '';
         // Benchmark::dd(fn() => Book::with('myBooks')->paginate(10));
+        // Debugbar::info(Book::with('myBooks')->paginate(10));
+
         return view(
             'livewire.books',
             [
-            'books' =>  Book::with('myBooks')->paginate(10),
-            'statuses' => BookStatus::all(),
-            'title' => 'Books'
+                'books' => Book::with('myBooks')->paginate(10),
+                'statuses' => BookStatus::all(),
+                'title' => 'Books',
             ]
         );
     }
 
     public function show(Book $book): View
     {
-
         $bookCached = Cache::remember(
             "book.{$book->book_slug}",
             5,
             function () use ($book) {
-                return Book::leftJoin(
+                return $book->leftJoin(
                     'authors',
                     function ($join) {
                         $join->on('books.author_id', '=', 'authors.id');
@@ -46,7 +46,7 @@ class BookController extends Component
         return view(
             'livewire.book-controller',
             [
-            'book' =>  $bookCached,
+                'book' => $bookCached,
             ]
         );
     }
@@ -57,9 +57,9 @@ class BookController extends Component
         return view(
             'livewire.books',
             [
-            'books' => Auth::user()->myBooks()->orderBy('books.created_at', 'DESC')->paginate(10),
-            'statuses' => BookStatus::all(),
-            'title' => 'My Books'
+                'books' => Auth::user()->myBooks()->orderBy('books.created_at', 'DESC')->paginate(10),
+                'statuses' => BookStatus::all(),
+                'title' => 'My Books',
             ]
         );
     }

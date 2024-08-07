@@ -19,8 +19,7 @@ class Book extends Model
         'author_id',
         'book_image_path',
         'book_year_published',
-        'book_slug'
-
+        'book_slug',
     ];
 
     public function getRouteKeyName()

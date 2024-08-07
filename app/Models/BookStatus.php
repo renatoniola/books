@@ -10,5 +10,4 @@ class BookStatus extends Model
     use HasFactory;
 
     protected $table = 'book_statuses';
-
 }

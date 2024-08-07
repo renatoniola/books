@@ -4,21 +4,16 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Author;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Cache;
 
 class AuthorController extends Component
 {
-    public function render()
-    {
-        return view('livewire.author-controller');
-    }
     public function index(): View
     {
 
         return view(
-            'livewire.authors',
+            'livewire.authors-list',
             [
             'authors' => Author::paginate(10),
             'title' => 'Authors'
@@ -45,15 +40,4 @@ class AuthorController extends Component
         );
     }
 
-    public function myAuthors(): View
-    {
-
-        return view(
-            'livewire.authors',
-            [
-            'authors' => Auth::user()->myAuthors()->paginate(10),
-            'title' => 'My authors',
-            ]
-        );
-    }
 }

@@ -2,38 +2,34 @@
 
 namespace App\Livewire;
 
-use App\Models\UserAuthor;
+use App\Models\Author;
+use App\Livewire\AuthorsList;
 use Livewire\Component;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Auth;
 
 class LikeButton extends Component
 {
-    public bool $onOff;
-    public int $authorId;
+    public Author $author;
 
-    public function mount(): void
+    public function toggleLike()
     {
-        $this->onOff = false;
+     
+        if (auth()->guest()) {
+            return $this->redirect(route('login'), true);
+        }
+
+        $user = auth()->user();
+
+        if ($user->hasLiked($this->author)) {
+            $user->likes()->detach($this->author);
+            return;
+        }
+
+        $user->likes()->attach($this->author);
     }
 
     public function render(): View
     {
         return view('livewire.like-button');
-    }
-
-    public function onClickHandler($authorId): void
-    {
-        $data =  [
-            'user_id' => Auth::user()->id,
-            'author_id' => $authorId,
-        ];
-        // dd($this->onOff, $authorId);
-        if (!$this->onOff) {
-            UserAuthor::create($data);
-        } else {
-            UserAuthor::where('user_id', Auth::user()->id)->where('author_id', $authorId)->delete();
-        }
-        $this->onOff = !$this->onOff;
     }
 }

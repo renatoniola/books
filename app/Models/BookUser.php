@@ -10,6 +10,7 @@ use App\Models\BookStatus;
 class BookUser extends Model
 {
     use HasFactory;
+
     protected $table = "book_user";
 
     protected $fillable = [
@@ -22,5 +23,4 @@ class BookUser extends Model
     {
         return $this->belongsTo(BookStatus::class);
     }
-
 }
