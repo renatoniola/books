@@ -13,7 +13,7 @@
   command: chdir={{ DIR }} php artisan storage:link
 
 - name: Clear the cache
-  command: chdir={{ DIR }} php artisan config:cache
+  command: chdir={{ DIR }} php artisan cache:clear
 
 - name: Artisan migrate
   command: chdir={{ DIR }} php artisan migrate
