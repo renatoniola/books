@@ -6,6 +6,7 @@ use App\Filament\Resources\BookResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Cache;
+use App\Services\UtilsService;
 
 class EditBook extends EditRecord
 {
@@ -18,9 +19,15 @@ class EditBook extends EditRecord
         ];
     }
 
+    protected function mutateFormDataBeforeSave(array $data): array
+{
+        Cache::forget('book.' . $this->record->book_slug);
+        $data['book_slug'] = UtilsService::generateSlug($this->record['id'], $data['book_title']);
+        return $data;
+}
+
     protected function afterSave(): void
     {
-        // Remove cache of book after being edited
-        Cache::forget('book.' . $this->record->book_slug);
+        $this->fillForm();
     }
 }
