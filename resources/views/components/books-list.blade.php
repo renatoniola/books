@@ -26,6 +26,7 @@
         @livewire('status-button',
         [
           'status' => !empty($book->myBooks[0]->pivot->book_status) ? $book->myBooks[0]->pivot->book_status : 0,
+          'statuses' => $statuses,
           'book_id' => $book->id
         ])
         @endif
