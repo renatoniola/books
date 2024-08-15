@@ -21,7 +21,7 @@ class BookController extends Component
         return view(
             'livewire.books',
             [
-                'books' => Book::with('myBooks')->paginate(10),
+                'books' => Book::with('author')->with('myBooks')->paginate(10),
                 'statuses' => BookStatus::all(),
                 'title' => 'Books',
             ]
