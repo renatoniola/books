@@ -13,7 +13,7 @@
     <div class="flex">
       <a wire:navigate href="{{ route('dashboard') }}" class="flex -m-1.5 p-1.5">
         <span class="sr-only">BOOKS</span>
-        <img class="h-8 w-8" src="{{ Vite::asset('resources/images/books.png') }}">
+        <img class="h-8 w-8" src="{{ Vite::image('books.png') }}">
         <div class="ml-6 p-1.5">BOOKS</div>
       </a>
     </div>
@@ -109,7 +109,7 @@
       <div class="flex items-center justify-between">
         <a href="#" class="flex -m-1.5 p-1.5">
           <span class="sr-only mr-8">Books</span>
-          <img class="h-8 w-8" src="{{ Vite::asset('resources/images/books.png') }}">Books
+          <img class="h-8 w-8" src="{{ Vite::image('books.png') }}">Books
         </a>
         <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700">
           <span class="sr-only">Close menu</span>

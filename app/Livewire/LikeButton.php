@@ -3,7 +3,6 @@
 namespace App\Livewire;
 
 use App\Models\Author;
-use App\Livewire\AuthorsList;
 use Livewire\Component;
 use Illuminate\View\View;
 
@@ -13,7 +12,6 @@ class LikeButton extends Component
 
     public function toggleLike()
     {
-     
         if (auth()->guest()) {
             return $this->redirect(route('login'), true);
         }
