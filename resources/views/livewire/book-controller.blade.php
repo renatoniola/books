@@ -28,14 +28,19 @@
             </div>
         </aside>
         <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
-            <h1>{{ $book->book_title }}</h1>
+            <h1 class="mb-5">{{ $book->book_title }}</h1>
+
             <p class="text-gray-600">By:
-                <a wire:navigate href="{{ route('author', $book->author->author_slug) }}">{{
+                <a class="text-xl" wire:navigate href="{{ route('author', $book->author->author_slug) }}">{{
                     $book->author->getFullName() }}</a>
             </p>
 
-            <p class="mt-5">{{ $book->book_descr }}</p>
-
+            <p class="mt-5">{!! $book->book_descr !!}</p>
+            <div class="mt-5">
+                Genres: @foreach ($book->genre as $gen)
+                <span class="mr-1 font-semibold">{{ $gen->genre }}</span>
+                @endforeach
+            </div>
         </main>
     </div>
 

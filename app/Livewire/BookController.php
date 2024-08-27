@@ -30,6 +30,7 @@ class BookController extends Component
 
     public function show(Book $book): View
     {
+        $generes = $book->genre();
         $bookCached = Cache::remember(
             "book.{$book->book_slug}",
             5,
@@ -39,7 +40,9 @@ class BookController extends Component
                     function ($join) {
                         $join->on('books.author_id', '=', 'authors.id');
                     }
-                )->where('book_slug', $book->book_slug)->first();
+                )
+                ->with('genre')
+                ->where('book_slug', $book->book_slug)->first();
             }
         );
 

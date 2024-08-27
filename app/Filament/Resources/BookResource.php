@@ -77,6 +77,11 @@ class BookResource extends Resource
                 Forms\Components\TextInput::make('book_year_published')
                     ->label('Year')
                     ->maxLength(4),
+                Forms\Components\CheckboxList::make('genres')
+                    ->relationship('genre', 'genre')
+                    ->searchable()
+                    ->columnSpanFull()
+                    ->columns(3),
 
                 ]
             );
