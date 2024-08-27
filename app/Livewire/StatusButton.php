@@ -20,7 +20,7 @@ class StatusButton extends Component
 
     public function mount(): void
     {
-        $this->statuses = $this->statuses->keyBy('id');
+        $this->statuses = BookStatus::all()->keyBy('id');
         $this->statusName = $this->status ? $this->statuses[$this->status]->status : 'not added';
         $this->position = $this->position === 'left' ? 'left-0' : 'right-0';
     }

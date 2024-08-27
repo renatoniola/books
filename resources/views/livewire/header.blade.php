@@ -1,4 +1,4 @@
-<header class="bg-white">
+<header class="bg-[#f4f1ea] shadow shadow-black-500/40">
   <nav x-data="{ 
     currentMenu: '' ,
     toggle (menuName) {
@@ -9,7 +9,7 @@
         }
        
     }  
-    }" class="mx-auto flex max-w-7xl items-center justify-between pt-6 pb-6 lg:px-8" aria-label="Global">
+    }" class="mx-auto flex max-w-7xl items-center justify-between pt-3 pb-3 lg:px-8" aria-label="Global">
     <div class="flex">
       <a wire:navigate href="{{ route('dashboard') }}" class="flex -m-1.5 p-1.5">
         <span class="sr-only">BOOKS</span>
