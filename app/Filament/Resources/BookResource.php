@@ -78,7 +78,7 @@ class BookResource extends Resource
                     ->label('Year')
                     ->maxLength(4),
                 Forms\Components\CheckboxList::make('genres')
-                    ->relationship('genre', 'genre')
+                    ->relationship('genres', 'genre')
                     ->searchable()
                     ->columnSpanFull()
                     ->columns(3),

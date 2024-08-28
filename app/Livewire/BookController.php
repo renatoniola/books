@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 use Livewire\Component;
+use App\Filament\Resources\BookResource;
 
 class BookController extends Component
 {
@@ -30,7 +31,6 @@ class BookController extends Component
 
     public function show(Book $book): View
     {
-        $generes = $book->genre();
         $bookCached = Cache::remember(
             "book.{$book->book_slug}",
             5,
@@ -41,7 +41,6 @@ class BookController extends Component
                         $join->on('books.author_id', '=', 'authors.id');
                     }
                 )
-                ->with('genre')
                 ->where('book_slug', $book->book_slug)->first();
             }
         );
@@ -49,6 +48,7 @@ class BookController extends Component
         return view(
             'livewire.book-controller',
             [
+                'edit_link' => BookResource::getUrl('edit', [$book->book_slug]),
                 'book' => $bookCached,
             ]
         );

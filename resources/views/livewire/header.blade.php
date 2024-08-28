@@ -13,8 +13,7 @@
     <div class="flex">
       <a wire:navigate href="{{ route('dashboard') }}" class="flex -m-1.5 p-1.5">
         <span class="sr-only">BOOKS</span>
-        <img class="h-8 w-8" src="{{ Vite::image('books.png') }}">
-        <div class="ml-6 p-1.5">BOOKS</div>
+        <img class="h-8" src="{{ Vite::image('logo.png') }}">
       </a>
     </div>
     <div class="flex lg:hidden">

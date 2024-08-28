@@ -1,4 +1,1 @@
-<a href="/"><div class="flex mr-10">
-    <img class="h-8 w-8" src="{{ Vite::image('books.png') }}" />
-    <div class="font-semibold ml-2.5 mt-2.5">BOOKS</div>
-</div></a>
+<a href="/"><img class="h-8" src="{{ Vite::image('logo-w.png') }}" /></a>
