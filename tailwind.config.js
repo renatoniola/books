@@ -11,9 +11,6 @@ export default {
     './resources/**/*.vue',
     './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
   ],
-  build: { 
-    assetsInlineLimit: 0 
-  },
   theme: {
     extend: {},
   },

@@ -26,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Paginator::useTailwind();
-        Vite::macro('image', fn(string $asset) => $this->asset("./resources/images/{$asset}"));
+        Vite::macro('image', fn(string $asset) => $this->asset("resources/images/{$asset}"));
     }
 }
