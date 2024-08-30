@@ -4,8 +4,11 @@
         @foreach ($author->book as $book)
         <div class="mr-3">
             <a wire:navigate href="{{ route('book', $book->book_slug) }}">
-                <img class="h-36 rounded-md" src="{{ asset('storage/' . $book->book_image_path) }}"
-                    alt="{{ $book->book_title }}" />
+
+                @livewire('book-image',[
+                'book' => $book,
+                'styles' => 'h-36 rounded-md shadow-lg'
+                ])
             </a>
         </div>
         @endforeach
