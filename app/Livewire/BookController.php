@@ -35,13 +35,7 @@ class BookController extends Component
             "book.{$book->book_slug}",
             5,
             function () use ($book) {
-                return $book->leftJoin(
-                    'authors',
-                    function ($join) {
-                        $join->on('books.author_id', '=', 'authors.id');
-                    }
-                )
-                ->where('book_slug', $book->book_slug)->first();
+                return $book->where('book_slug', $book->book_slug)->with('genres')->first();
             }
         );
 
