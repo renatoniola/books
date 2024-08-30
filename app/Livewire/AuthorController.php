@@ -27,7 +27,7 @@ class AuthorController extends Component
             "author.{$author->author_slug}",
             5,
             function () use ($author) {
-                return Author::where('author_slug', $author->author_slug)->first();
+                return Author::where('author_slug', $author->author_slug)->with('book')->first();
             }
         );
 
