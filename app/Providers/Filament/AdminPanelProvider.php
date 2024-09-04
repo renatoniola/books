@@ -28,6 +28,8 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->login()
+            ->passwordReset()
+            ->profile(isSimple: false)
             ->colors(
                 [
                     'danger' => Color::Rose,
@@ -61,11 +63,6 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-                ]
-            )
-            ->authMiddleware(
-                [
-                MustBeAdmin::class,
                 ]
             );
     }

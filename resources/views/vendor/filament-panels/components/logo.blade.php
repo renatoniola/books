@@ -1,1 +1,1 @@
-<a href="/"><img class="h-8" src="{{ Vite::image('logo-w.png') }}" /></a>
+<a href="{{ route('dashboard') }}"><img class="h-8" src="{{ Vite::image('logo-w.png') }}" /></a>

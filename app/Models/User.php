@@ -76,4 +76,9 @@ class User extends Authenticatable
     {
         return $this->likes()->where('author_id', $author->id)->exists();
     }
+
+    public function isAdmin(): bool
+    {
+        return $this->role()->where('id', 1)->exists();
+    }
 }
