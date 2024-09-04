@@ -19,6 +19,10 @@ class GenreResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-tag';
 
+    protected static ?string $navigationGroup = 'Items';
+
+    protected static ?int $navigationSort = 15;
+
     public static function form(Form $form): Form
     {
         return $form
@@ -56,6 +60,11 @@ class GenreResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function canViewAny(): bool
+    {
+        return auth()->user()->isAdmin();
     }
 
     public static function getPages(): array

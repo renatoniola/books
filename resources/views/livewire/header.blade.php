@@ -85,13 +85,13 @@
     </div>
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
       @if (Auth::guest())
-      <a href="/admin/login" class="text-sm font-semibold leading-6 text-gray-900">
+      <a href="{{ route('filament.admin.auth.login')}}" class="text-sm font-semibold leading-6 text-gray-900">
         Log in <span aria-hidden="true">&rarr;</span></a>
       @else
-      <span class="text-sm font-semibold leading-6 text-gray-900">{{ Auth::user()->name }} ({{ Auth::user()->email
+      <span class="text-sm font-semibold leading-6 text-gray-900"><a href="{{ route( 'filament.admin.pages.dashboard') }}">{{ Auth::user()->name }}</a> ({{ Auth::user()->email
         }})</span>
 
-      <form action="/admin/logout" method="post">
+      <form action="{{ route('filament.admin.auth.logout')}}" method="post">
         @csrf
         <button type="submit" class="text-sm font-semibold leading-6 text-gray-900">Logout</button>
       </form>
