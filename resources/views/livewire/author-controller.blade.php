@@ -12,14 +12,22 @@
         <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
             <div class="flex justify-between">
                 <h1>{{ $author->getFullName() }}</h1>
-                @if (!Auth::guest())
-                @livewire('like-button',
-                [
-                'author' => $author
-                ]
-                )
-                @endif
+                <div class="flex items-center">
+                    @if (!Auth::guest())
+                    @livewire('like-button',
+                    [
+                    'author' => $author
+                    ]
+                    )
+                    @endif
 
+                    @if (!Auth::guest() && Auth::user()->isAdmin())
+                    @livewire('products-menu', [
+                    'slug' => $author->author_slug,
+                    'route' => 'filament.admin.resources.authors.edit'
+                    ])
+                    @endif
+                </div>
             </div>
 
             <p class="mt-10">

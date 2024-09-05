@@ -10,10 +10,11 @@
               return menuName;
             }
            
-        }}" class="mx-auto flex flex-row flex-wrap py-4 max-w-7xl mt-12">
+        }
+    }" class="mx-auto flex flex-row flex-wrap py-4 max-w-7xl mt-12">
         <aside class="w-full sm:w-1/3 md:w-1/4 px-2">
             <div class="sticky top-0 bg-white rounded-xl w-full">
-         
+
                 @livewire('book-image',[
                 'book' => $book,
                 'styles' => 'w-60 object-cover rounded-md bg-gray-50 shadow-lg'
@@ -31,10 +32,15 @@
             </div>
         </aside>
         <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
-            <h1 class="mb-5">{{ $book->book_title }}</h1>
-            @if (!Auth::guest())
-            <a href="{{ $edit_link }}">edit</a>
-            @endif
+            <div class="flex justify-between">
+                <h1 class="mb-5">{{ $book->book_title }}</h1>
+                @if (!Auth::guest() && Auth::user()->isAdmin())
+                @livewire('products-menu', [
+                'slug' => $book->book_slug,
+                'route' => 'filament.admin.resources.books.edit'
+                ])
+                @endif
+            </div>
             <p class="text-gray-600">By:
                 <a class="text-xl" wire:navigate href="{{ route('author', $book->author->author_slug) }}">{{
                     $book->author->getFullName() }}</a>
