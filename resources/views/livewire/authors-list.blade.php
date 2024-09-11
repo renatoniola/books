@@ -13,7 +13,8 @@
           @livewire('avatar',[
           'author' => $author,
           'styles' => 'h-12 w-12 flex-none object-cover rounded-full bg-gray-50'
-          ])
+          ], key('avatar' . $author->id))
+          
           <div class="min-w-0 flex-auto">
             <p class="text-sm font-semibold leading-6 text-gray-900"><a wire:navigate
                 href="{{ route('author', $author->author_slug) }}">{{ $author->getFullName() }}</a></p>
@@ -25,7 +26,8 @@
             @livewire('like-button',
             [
             'author' => $author
-            ]
+            ], 
+            key('like-button' . $author->id)
             )
             @endif
           </p>
