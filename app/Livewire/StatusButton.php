@@ -27,7 +27,7 @@ class StatusButton extends Component
 
     public function render(): View
     {
-        return view('livewire.status-button');
+        return view('livewire.components.status-button');
     }
 
     public function updateBookStatusForUser(int $bookId, int $book_status): void

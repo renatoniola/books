@@ -10,6 +10,13 @@
             </div>
         </aside>
         <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
+            @livewire('breadcrumbs',
+            [
+            'collectionPath' => route('all-authors'),
+            'collectionTitle' => 'Authors',
+            'title' => $author->getFullName()
+            ]
+            )
             <div class="flex justify-between">
                 <h1>{{ $author->getFullName() }}</h1>
                 <div class="flex items-center">

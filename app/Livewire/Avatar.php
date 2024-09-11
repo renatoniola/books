@@ -22,6 +22,6 @@ class Avatar extends Component
             file_exists('storage/' . $this->author->author_image_path) ?
             '/storage/' . $this->author->author_image_path :
             Vite::image("{$this->image}");
-        return view('livewire.avatar');
+        return view('livewire.components.avatar');
     }
 }

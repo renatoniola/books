@@ -40,7 +40,7 @@ class BookController extends Component
         );
 
         return view(
-            'livewire.book-controller',
+            'livewire.book',
             [
                 'edit_link' => BookResource::getUrl('edit', [$book->book_slug]),
                 'book' => $bookCached,

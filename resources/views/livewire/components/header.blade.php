@@ -88,7 +88,8 @@
       <a href="{{ route('filament.admin.auth.login')}}" class="text-sm font-semibold leading-6 text-gray-900">
         Log in <span aria-hidden="true">&rarr;</span></a>
       @else
-      <span class="text-sm font-semibold leading-6 text-gray-900"><a href="{{ route( 'filament.admin.pages.dashboard') }}">{{ Auth::user()->name }}</a> ({{ Auth::user()->email
+      <span class="text-sm font-semibold leading-6 text-gray-900"><a
+          href="{{ route( 'filament.admin.pages.dashboard') }}">{{ Auth::user()->name }}</a> ({{ Auth::user()->email
         }})</span>
 
       <form action="{{ route('filament.admin.auth.logout')}}" method="post">

@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Livewire\BookController;
 use App\Livewire\AuthorController;
-use App\Livewire\AuthorsList;
 
 Route::get('/', function () {
     return view('livewire.dashboard')
@@ -21,8 +20,5 @@ Route::controller(BookController::class)->group(function () {
 Route::controller(AuthorController::class)->group(function () {
     Route::get('/author/{author}', 'show')->name('author');
     Route::get('/authors', 'index')->name('all-authors');
-});
-
-Route::controller(AuthorsList::class)->group(function () {
-    Route::get('/my-authors', 'render')->middleware('auth')->name('my-authors');
+    Route::get('/my-authors', 'myAuthors')->middleware('auth')->name('my-authors');
 });

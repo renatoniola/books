@@ -1,11 +1,7 @@
 <div x-data="{
     editOpenVar: false,
         editOpen () {
-            if (this.editOpenVar) {
-                return false;
-            } else {
-                return true;
-            }
+            return !this.editOpenVar;
         }
     }" class="relative">
     <button x-on:click=" editOpenVar = editOpen() ">

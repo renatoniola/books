@@ -13,6 +13,6 @@ class Header extends Component
 
     public function render(): View
     {
-        return view('livewire.header');
+        return view('livewire.components.header');
     }
 }

@@ -32,6 +32,13 @@
             </div>
         </aside>
         <main role="main" class="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
+            @livewire('breadcrumbs',
+            [
+            'collectionPath' => route('all-books'),
+            'collectionTitle' => 'Books',
+            'title' => $book->book_title
+            ]
+            )
             <div class="flex justify-between">
                 <h1 class="mb-5">{{ $book->book_title }}</h1>
                 @if (!Auth::guest() && Auth::user()->isAdmin())

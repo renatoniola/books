@@ -19,6 +19,6 @@ class BookImage extends Component
             file_exists('storage/' . $this->book->book_image_path) ?
             '/storage/' . $this->book->book_image_path :
             Vite::image("books.jpg");
-        return view('livewire.book-image');
+        return view('livewire.components.book-image');
     }
 }

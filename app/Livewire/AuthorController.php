@@ -13,10 +13,10 @@ class AuthorController extends Component
     {
 
         return view(
-            'livewire.authors-list',
+            'livewire.authors',
             [
-            'authors' => Author::paginate(10),
-            'title' => 'Authors'
+            'title' => 'Authors',
+            'type' => 'authors'
             ]
         );
     }
@@ -32,10 +32,21 @@ class AuthorController extends Component
         );
 
         return view(
-            'livewire.author-controller',
+            'livewire.author',
             [
             'author' =>  $authorCached,
             'title' => 'Authors'
+            ]
+        );
+    }
+
+    public function myAuthors()
+    {
+        return view(
+            'livewire.authors',
+            [
+                'title' => 'My Authors',
+                'type' => 'my-authors'
             ]
         );
     }
