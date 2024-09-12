@@ -1,2 +1,1 @@
-<img class="{{ $styles }}" src='{{ $url }}'
-    alt="{{ $book->book_title }}">
+<img class="{{ $styles }}" src='{{ $url }}' alt="{{ $book->book_title }}">
