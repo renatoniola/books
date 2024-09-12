@@ -1,9 +1,9 @@
 <div x-data="{
     editOpenVar: false,
-        editOpen () {
-            return !this.editOpenVar;
-        }
-    }" class="relative">
+    editOpen() {
+        return !this.editOpenVar;
+    }
+}" class="relative">
     <button x-on:click=" editOpenVar = editOpen() ">
         <svg fill="#777777" viewBox="0 0 256 256" class="w-6 h-6 mt-2" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -15,6 +15,6 @@
         x-transition:leave-start="transform opacity-100 scale-10" x-transition:leave-end="transform opacity-0 scale-95"
         class="absolute right-0 z-10 mt-0 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none px-4 py-2 text-sm"
         x-show="editOpenVar">
-        <a href="{{ route($route, [$slug])}}">edit</a>
+        <a href="{{ route($route, [$slug]) }}">edit</a>
     </div>
 </div>
