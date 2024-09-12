@@ -32,6 +32,27 @@ class AuthorResource extends Resource
                 Forms\Components\TextInput::make('author_lastname')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\RichEditor::make('author_descr')
+                    ->label('Description')
+                    ->required()
+                    ->toolbarButtons(
+                        [
+                        'attachFiles',
+                        'blockquote',
+                        'bold',
+                        'bulletList',
+                        'codeBlock',
+                        'h2',
+                        'h3',
+                        'italic',
+                        'link',
+                        'orderedList',
+                        'redo',
+                        'strike',
+                        'underline',
+                        'undo',
+                        ]
+                    ),
                 Forms\Components\TextInput::make('author_slug')
                     ->label('Slug')
                     ->maxLength(255)
