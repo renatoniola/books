@@ -16,6 +16,7 @@ class Author extends Model
         'author_image_path',
         'author_slug',
         'author_descr',
+        'author_excerpt',
 
     ];
 
