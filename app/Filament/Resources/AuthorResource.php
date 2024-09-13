@@ -32,6 +32,16 @@ class AuthorResource extends Resource
                 Forms\Components\TextInput::make('author_lastname')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\TextInput::make('author_slug')
+                    ->label('Slug')
+                    ->maxLength(255)
+                    ->disabled(),
+                Forms\Components\FileUpload::make('author_image_path')
+                    ->avatar()
+                    ->disk('public')
+                    ->visibility('public')
+                    ->directory('authors')
+                    ->required(),
                 Forms\Components\RichEditor::make('author_descr')
                     ->label('Description')
                     ->required()
@@ -53,16 +63,26 @@ class AuthorResource extends Resource
                         'undo',
                         ]
                     ),
-                Forms\Components\TextInput::make('author_slug')
-                    ->label('Slug')
-                    ->maxLength(255)
-                    ->disabled(),
-                Forms\Components\FileUpload::make('author_image_path')
-                    ->avatar()
-                    ->disk('public')
-                    ->visibility('public')
-                    ->directory('authors')
-                    ->required(),
+                Forms\Components\RichEditor::make('author_excerpt')
+                ->label('Excerpt')
+                ->toolbarButtons(
+                    [
+                    'attachFiles',
+                    'blockquote',
+                    'bold',
+                    'bulletList',
+                    'codeBlock',
+                    'h2',
+                    'h3',
+                    'italic',
+                    'link',
+                    'orderedList',
+                    'redo',
+                    'strike',
+                    'underline',
+                    'undo',
+                    ]
+                )
                 ]
             );
     }

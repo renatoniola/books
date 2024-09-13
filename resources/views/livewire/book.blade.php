@@ -60,6 +60,10 @@
                 'title' => "Other Books from {$book->author->getFullName()}",
                 'currentBookId' => $book->id,
             ])
+
+            @livewire('author-block',[
+                'author' => $book->author
+            ])
         </main>
     </div>
 
