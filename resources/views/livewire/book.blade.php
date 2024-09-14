@@ -12,7 +12,7 @@
         }
     }" class="mx-auto flex flex-row flex-wrap py-4 max-w-7xl mt-12">
         <aside class="w-full sm:w-1/3 md:w-1/4 px-2">
-            <div class="sticky top-0 bg-white rounded-xl w-full">
+            <div class="sticky top-10 bg-white rounded-xl w-full">
 
                 @livewire('book-image', [
                     'book' => $book,
