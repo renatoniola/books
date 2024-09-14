@@ -2,7 +2,7 @@
 
     <div class="mx-auto flex flex-row flex-wrap py-4 max-w-7xl mt-12">
         <aside class="w-full sm:w-1/3 md:w-1/4 px-2">
-            <div class="sticky top-0 bg-white w-full">
+            <div class="sticky top-10 bg-white w-full">
                 @livewire('avatar', [
                     'author' => $author,
                     'styles' => 'w-60 object-cover rounded-md bg-gray-50',
