@@ -12,12 +12,12 @@ class LikeButton extends Component
     public Author $author;
     public string $route;
 
-    public function mount()
+    public function mount(): void
     {
         $this->route = Route::getCurrentRoute()->uri;
     }
 
-    public function toggleLike()
+    public function toggleLike(): void
     {
 
         if ($this->route === 'my-authors') {
@@ -25,7 +25,7 @@ class LikeButton extends Component
         }
 
         if (auth()->guest()) {
-            return $this->redirect(route('login'), true);
+            $this->redirect(route('login'), true);
         }
 
         $user = auth()->user();
@@ -33,9 +33,9 @@ class LikeButton extends Component
         if ($user->hasLiked($this->author)) {
             $user->likes()->detach($this->author);
             return;
+        } else {
+            $user->likes()->attach($this->author);
         }
-
-        $user->likes()->attach($this->author);
     }
 
     public function render(): View

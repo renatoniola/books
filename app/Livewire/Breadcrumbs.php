@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Illuminate\View\View;
 
 class Breadcrumbs extends Component
 {
@@ -10,7 +11,7 @@ class Breadcrumbs extends Component
     public string $collectionPath;
     public string $collectionTitle;
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.components.breadcrumbs');
     }

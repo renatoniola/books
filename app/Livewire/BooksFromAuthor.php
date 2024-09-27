@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Models\Author;
+use Illuminate\View\View;
 
 class BooksFromAuthor extends Component
 {
@@ -11,7 +12,7 @@ class BooksFromAuthor extends Component
     public string $title = '';
     public int $currentBookId;
 
-    public function render()
+    public function render(): View
     {
         if ($this->title === '') {
             $this->title = "Books from {$this->author->getFullName()}";

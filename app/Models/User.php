@@ -72,7 +72,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Author::class, 'user_author')->withTimestamps();
     }
 
-    public function hasLiked($author)
+    public function hasLiked($author): bool
     {
         return $this->likes()->where('author_id', $author->id)->exists();
     }

@@ -21,6 +21,8 @@ class EditAuthor extends EditRecord
     protected function afterSave(): void
     {
         // Remove cache of author after being edited
-        Cache::forget('author.' . $this->record->author_slug);
+        if (isset($this->record->author_slug)) {
+            Cache::forget('author.' . $this->record->author_slug);
+        }
     }
 }

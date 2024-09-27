@@ -23,7 +23,9 @@ class EditBook extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        Cache::forget('book.' . $this->record->book_slug);
+        if (isset($this->record->book_slug)) {
+            Cache::forget('book.' . $this->record->book_slug);
+        }
         $data['book_slug'] = UtilsService::generateSlug($this->record['id'], $data['book_title']);
         return $data;
     }
