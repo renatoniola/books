@@ -6,6 +6,8 @@ stages:
 
 test_code:
   stage: test
+  tags:
+    - Docker
   script:
     - echo "testing .."
     - pwd
