@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\User;
 use App\Models\Author;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      */

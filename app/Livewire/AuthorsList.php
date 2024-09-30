@@ -12,6 +12,9 @@ class AuthorsList extends Component
 {
     use WithPagination;
 
+    /**
+     *  @var array<string> $listeners
+     **/
     protected $listeners = ['clicked' => '$refresh'];
 
     public string $type = '';

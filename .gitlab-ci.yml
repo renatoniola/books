@@ -16,6 +16,7 @@ test_code:
     - ls /etc/php/8.2/cli
     - composer update --lock
     - composer install
+    - composer pint
     - composer phpstan
   only:
     - /^feature.*$/

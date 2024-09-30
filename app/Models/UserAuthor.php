@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * UserAuthor Model.
+ */
 class UserAuthor extends Model
 {
     use HasFactory;
@@ -16,7 +19,12 @@ class UserAuthor extends Model
     ];
     protected $table = 'user_author';
 
-    public static function toggleAuthorUserLike($authorId): bool
+    /**
+     * Toggle author user like.
+     * @param int $authorId
+     * @return bool
+     */
+    public static function toggleAuthorUserLike(int $authorId): bool
     {
 
         $userAuthor = UserAuthor::where('user_id', Auth::user()->id)->where('author_id', $authorId)->first();

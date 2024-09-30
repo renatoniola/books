@@ -42,6 +42,7 @@ class StatusButton extends Component
                 'book_status' => $book_status
             ]
         );
+
         $this->statusName = $this->statuses[$res->book_status]->status;
     }
 }

@@ -65,6 +65,9 @@
         "pint": [
             "./vendor/bin/pint --test"
         ],
+        "pint-r": [
+            "./vendor/bin/pint --repair"
+        ],
         "enlightn": [
             "@php artisan enlightn"
         ]
