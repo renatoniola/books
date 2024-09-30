@@ -7,8 +7,6 @@ use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Facades\Cache;
 use App\Services\UtilsService;
-use Barryvdh\Debugbar\Facades\Debugbar;
-use App\Models\Book;
 
 class EditBook extends EditRecord
 {
@@ -23,8 +21,12 @@ class EditBook extends EditRecord
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        Cache::forget('book.' . $this->record->book_slug);
-        $data['book_slug'] = UtilsService::generateSlug($this->record['id'], $data['book_title']);
+        if (isset($this->record->book_slug)) {
+            Cache::forget('book.' . $this->record->book_slug);
+        }
+        if (isset($this->record->id)) {
+            $data['book_slug'] = UtilsService::generateSlug($this->record->id, $data['book_title']);
+        }
         return $data;
     }
 

@@ -12,8 +12,15 @@ use Illuminate\View\View;
 use Livewire\Component;
 use App\Filament\Resources\BookResource;
 
+/**
+ * BookController class.
+ */
 class BookController extends Component
 {
+    /**
+     * Shows all books.
+     * @return \Illuminate\View\View
+     */
     public function index(): View
     {
         // Benchmark::dd(fn() => Book::with('myBooks')->paginate(10));
@@ -29,6 +36,13 @@ class BookController extends Component
         );
     }
 
+    /**
+     * Single book show function.
+     *
+     * @param Book $book
+     *
+     * @return \Illuminate\View\View
+     */
     public function show(Book $book): View
     {
         $bookCached = Cache::remember(
@@ -48,6 +62,10 @@ class BookController extends Component
         );
     }
 
+    /**
+     * Retrives books attached to the user.
+     * @return \Illuminate\View\View
+     */
     public function myBooks(): View
     {
         // Benchmark::dd(fn() => Auth::user()->myBooks()->orderBy('books.created_at', 'DESC')->paginate(10) );

@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Models\Book;
 use App\Models\Genre;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      */

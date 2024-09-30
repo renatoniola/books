@@ -40,7 +40,7 @@ class AuthorController extends Component
         );
     }
 
-    public function myAuthors()
+    public function myAuthors(): View
     {
         return view(
             'livewire.authors',

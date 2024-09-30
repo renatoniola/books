@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Summary of User
+ */
 class User extends Authenticatable
 {
     use HasFactory;
@@ -52,6 +53,10 @@ class User extends Authenticatable
         ];
     }
 
+    /**
+     * Role relationshop.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
@@ -72,7 +77,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Author::class, 'user_author')->withTimestamps();
     }
 
-    public function hasLiked($author)
+    public function hasLiked(Author $author): bool
     {
         return $this->likes()->where('author_id', $author->id)->exists();
     }

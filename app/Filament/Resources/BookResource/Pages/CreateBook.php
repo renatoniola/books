@@ -5,8 +5,6 @@ namespace App\Filament\Resources\BookResource\Pages;
 use App\Filament\Resources\BookResource;
 use Filament\Resources\Pages\CreateRecord;
 use App\Services\UtilsService;
-use Barryvdh\Debugbar\Facades\Debugbar;
-use App\Models\Book;
 
 class CreateBook extends CreateRecord
 {
@@ -21,7 +19,13 @@ class CreateBook extends CreateRecord
 
     protected function afterCreate(): void
     {
-        $this->record['book_slug'] = UtilsService::generateSlug($this->record['id'], $this->record['book_title']);
-        $this->record->save();
+        if (
+            isset($this->record->book_slug) &&
+            isset($this->record->id) &&
+            isset($this->record->book_title)
+        ) {
+            $this->record->book_slug = UtilsService::generateSlug($this->record->id, $this->record->book_title);
+            $this->record->save();
+        }
     }
 }
