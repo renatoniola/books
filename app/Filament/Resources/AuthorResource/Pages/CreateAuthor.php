@@ -19,8 +19,13 @@ class CreateAuthor extends CreateRecord
 
     protected function afterCreate(): void
     {
-        $this->record->author_slug = UtilsService::generateSlug($this->record->id, "{$this->record->author_name} {$this->record->author_lastname}");
-        if (isset($this->record)) {
+        if (
+            isset($this->record->author_slug) &&
+            isset($this->record->id) &&
+            isset($this->record->author_name) &&
+            isset($this->record->author_lastname)
+        ) {
+            $this->record->author_slug = UtilsService::generateSlug($this->record->id, "{$this->record->author_name} {$this->record->author_lastname}");
             try {
                 $this->record->save();
             } catch (\Exception $e) {

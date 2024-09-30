@@ -42,7 +42,6 @@ class StatusButton extends Component
                 'book_status' => $book_status
             ]
         );
-
-        $this->statusName = $this->statuses[$res->book_status]->status;
+        $this->statusName = $this->statuses->firstWhere('id', $res->book_status)->getAttribute('status');
     }
 }
